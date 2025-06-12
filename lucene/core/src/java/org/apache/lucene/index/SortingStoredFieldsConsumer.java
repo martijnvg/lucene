@@ -77,7 +77,7 @@ final class SortingStoredFieldsConsumer extends StoredFieldsConsumer {
       };
   private static final StoredFieldsFormat TEMP_STORED_FIELDS_FORMAT =
       new Lucene90CompressingStoredFieldsFormat(
-          "TempStoredFields", NO_COMPRESSION, 128 * 1024, 1, 10);
+          "TempStoredFields", CompressionMode.FAST, 10 * 8 * 1024, 1024, 10); // mimics fast compression mode
   TrackingTmpOutputDirectoryWrapper tmpDirectory;
 
   SortingStoredFieldsConsumer(Codec codec, Directory directory, SegmentInfo info) {
